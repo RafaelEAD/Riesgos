@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor de Mapas</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="map" style="height: 500px;"></div>
+    <div id="submenu" style="display: none;">
+        <label for="escenario">Escenario:</label>
+        <select id="escenario">
+            <option value="SSP126">SSP126</option>
+            <option value="SSP245">SSP245</option>
+            <option value="SSP585">SSP585</option>
+        </select>
+
+        <label for="temporalidad">Temporalidad:</label>
+        <select id="temporalidad">
+            <option value="Corto">Corto Plazo</option>
+            <option value="Mediano">Mediano Plazo</option>
+        </select>
+
+        <button onclick="cargarMapa()">Ver Mapa</button>
+    </div>
+
+    <iframe id="mapaFrame" style="width: 100%; height: 600px; display: none;"></iframe>
+
+    <script src="script.js"></script>
+</body>
+</html>
