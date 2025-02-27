@@ -1,26 +1,30 @@
-// Inicializa el mapa en un punto central
-var map = L.map('map').setView([19.4326, -99.1332], 5); // CDMX como referencia
+// Datos de ejemplo para la gráfica de tiempo
+const datosGrafica = {
+    x: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
+    y: [10, 15, 13, 17, 21, 25],
+    type: 'scatter',
+    mode: 'lines+markers',
+    marker: { color: '#4CAF50' }
+};
 
-// Agrega un fondo base
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
+// Configuración de la gráfica
+const layout = {
+    title: 'Gráfica de Tiempo',
+    xaxis: { title: 'Meses' },
+    yaxis: { title: 'Valores' }
+};
 
-// Agrega un marcador interactivo (puedes agregar más con coordenadas de otros sitios)
-var marker = L.marker([19.4326, -99.1332]).addTo(map);
-marker.bindPopup("CDMX - Haz clic para seleccionar escenario").openPopup();
+// Renderizar la gráfica
+Plotly.newPlot('grafica-tiempo', [datosGrafica], layout);
 
-// Evento para mostrar el submenú cuando se haga clic en el marcador
-marker.on('click', function () {
-    document.getElementById("submenu").style.display = "block";
-});
+// Datos estadísticos de ejemplo
+const datosEstadisticos = `
+Media: 15.5
+Mediana: 15
+Desviación Estándar: 5.2
+Mínimo: 10
+Máximo: 25
+`;
 
-// Función para cargar el mapa seleccionado
-function cargarMapa() {
-    var escenario = document.getElementById("escenario").value;
-    var temporalidad = document.getElementById("temporalidad").value;
-    var archivo = `data/${escenario}_${temporalidad}.html`;
-
-    document.getElementById("mapaFrame").src = archivo;
-    document.getElementById("mapaFrame").style.display = "block";
-}
+// Mostrar datos estadísticos
+document.getElementById('datos-estadisticos').textContent = datosEstadisticos;
