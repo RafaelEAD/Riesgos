@@ -3,32 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visor de Mapas</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <title>Mi Visor de Datos</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Incluye Plotly para la gráfica de tiempo -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
+    <header>
+        <h1>Mi Visor de Datos</h1>
+    </header>
 
-    <div id="map" style="height: 500px;"></div>
-    <div id="submenu" style="display: none;">
-        <label for="escenario">Escenario:</label>
-        <select id="escenario">
-            <option value="SSP126">SSP126</option>
-            <option value="SSP245">SSP245</option>
-            <option value="SSP585">SSP585</option>
-        </select>
+    <main>
+        <!-- Sección de Mapas HTML -->
+        <section>
+            <h2>Mapas</h2>
+            <ul>
+                <li><a href="data/SSP126_Corto.html" target="_blank">SSP126 Corto</a></li>
+                <li><a href="data/SSP126_Mediano.html" target="_blank">SSP126 Mediano</a></li>
+                <li><a href="data/SSP245_Corto.html" target="_blank">SSP245 Corto</a></li>
+                <li><a href="data/SSP245_Mediano.html" target="_blank">SSP245 Mediano</a></li>
+                <li><a href="data/SSP585_Corto.html" target="_blank">SSP585 Corto</a></li>
+                <li><a href="data/SSP585_Mediano.html" target="_blank">SSP585 Mediano</a></li>
+            </ul>
+        </section>
 
-        <label for="temporalidad">Temporalidad:</label>
-        <select id="temporalidad">
-            <option value="Corto">Corto Plazo</option>
-            <option value="Mediano">Mediano Plazo</option>
-        </select>
+        <!-- Sección de Datos Mensuales -->
+        <section>
+            <h2>Datos Mensuales</h2>
+            <p>Descarga los datos mensuales en formato Excel:</p>
+            <a href="assets/datos_mensuales.xlsx" download>Descargar Excel</a>
+        </section>
 
-        <button onclick="cargarMapa()">Ver Mapa</button>
-    </div>
+        <!-- Sección de Gráfica de Tiempo -->
+        <section>
+            <h2>Gráfica de Tiempo</h2>
+            <div id="grafica-tiempo"></div>
+        </section>
 
-    <iframe id="mapaFrame" style="width: 100%; height: 600px; display: none;"></iframe>
+        <!-- Sección de Datos Estadísticos -->
+        <section>
+            <h2>Datos Estadísticos</h2>
+            <p>Aquí puedes ver los datos estadísticos:</p>
+            <pre id="datos-estadisticos">Cargando datos...</pre>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Mi Visor de Datos</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
